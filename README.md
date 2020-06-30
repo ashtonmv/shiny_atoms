@@ -80,3 +80,5 @@ def shinify(input_filename, output_filename, specular=0.3, reflection=0.8, diffu
 +I & +O: povray filename and image filename, respectively
 
 +UA: allow for transparency (alpha), I like it for creating clear .png files
+
+<img src="fecl2_shiny.png">
