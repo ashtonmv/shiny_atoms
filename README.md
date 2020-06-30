@@ -1,4 +1,6 @@
-# POV-Ray Atoms
+# Shiny Atoms with Ovito + POV-Ray
+
+These are just some simple instructions for rendering publication-style images of crystal structures. Hopefully someone else will find them to be useful.
 
 ## Install POV-Ray
 
