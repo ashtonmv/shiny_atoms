@@ -70,3 +70,8 @@ shinify("ovito_file.pov", "ovito_file_shiny.pov")
 ```
 
 ## Finally, run `povray` on the new shiny .pov file
+`povray +H800 +W800 +Iovito_file_shiny.pov +Oovito_file_shiny.png +UA`
+
++H & +W: image height and width in px
++I & +O: povray filename and image filename, respectively
++UA: allow for transparency (alpha), I like it for creating clear .png files
