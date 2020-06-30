@@ -17,7 +17,7 @@ The most important part is getting the view angle you want, but ovito also makes
 ## Export POV-Ray file
 file > Export File > select POV-Ray scene
 
-## shinify the .pov file (something like this.. sorry for the weak code):
+## shinify the .pov file (something like this.. sorry for the ugly code):
 
 ```python
 def shinify(input_filename, output_filename, specular=0.3, reflection=0.8, diffuse=0.9):
@@ -81,4 +81,4 @@ def shinify(input_filename, output_filename, specular=0.3, reflection=0.8, diffu
 
 +UA: allow for transparency (alpha), I like it for creating clear .png files
 
-<img src="fecl2_shiny.png">
+<img src="fecl2_shiny.png" width="800px">
