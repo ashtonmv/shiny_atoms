@@ -20,23 +20,26 @@ file > Export File > select POV-Ray scene
 ## shinify the .pov file (something like this.. sorry for the weak code):
 
 ```python
-def shinify(input_filename, output_filename, specular=0.9, reflection=0.6, diffuse=0.4):
+def shinify(input_filename, output_filename, specular=0.3, reflection=0.8, diffuse=0.9):
 
     lines = open(input_filename).readlines()
     with open(output_filename, "w") as f:
         i = 0
-        while i < len(ovito_lines):
-            line = ovito_lines[i]
+        while i < len(lines):
+            line = lines[i]
 
+            # Add better lighting
+            # These lines will put a light fixture at the same location as the camera
             if line.split()[0] == "translate":
                 light_x, light_y, light_z = line.split("<")[1].split(">")[0].split(",")
-            
-            # Add better lighting
+                light_z = str(float(light_z.strip()) + 0)
+
+            # you can also mess with the color and its intensity
             if line.split()[0] == "light_source":
                 f.write(
                     "light_source {\n"
                     + f"  <{light_x}, {light_y}, {light_z}>\n"
-                    + "  color <1, 1, 1>\n"
+                    + "  color <1.2, 1.2, 1.2>\n"
                     + "}\n"
                 )
                 i += 6
@@ -50,25 +53,23 @@ def shinify(input_filename, output_filename, specular=0.9, reflection=0.6, diffu
                     + "}\n#end\n"
                 )
                 i += 4
-            elif line[0:7] == "SPRTCLE":
+            elif line.split("(")[0] == "SPRTCLE":
                 f.write(line.replace(")", f", {specular}, {reflection}, {diffuse})"))
             
             # Add shiny finish to cylindrical bonds
             elif line[0:10] == "#macro CYL":
                 f.write(
-                    "#macro CYL(base, dir, cylRadius, cylColor) // Macro for cylinders"
-                    + "cylinder { base, base + dir, cylRadius"
+                    "#macro CYL(base, dir, cylRadius, cylColor, spc, ref, dif) // Macro for cylinders\n"
+                    + "cylinder { base, base + dir, cylRadius\n"
                     + "         texture { pigment { color cylColor } finish { specular spc reflection ref diffuse dif } }\n"
                     + "}\n#end\n"
                 )
                 i += 4
-            elif line[0:4] == "CYL":
+            elif line.split("(")[0] == "CYL":
                 f.write(line.replace(")", f", {specular}, {reflection}, {diffuse})"))
             else:
                 f.write(line)
             i += 1
-
-shinify("ovito_file.pov", "ovito_file_shiny.pov")
 ```
 
 ## Finally, run `povray` on the new shiny .pov file
