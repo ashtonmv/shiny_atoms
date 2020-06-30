@@ -76,5 +76,7 @@ def shinify(input_filename, output_filename, specular=0.3, reflection=0.8, diffu
 `povray +H800 +W800 +Iovito_file_shiny.pov +Oovito_file_shiny.png +UA`
 
 +H & +W: image height and width in px. I usually go well into the 1000's for a final publication image, but ~800 is fast for testing.
+
 +I & +O: povray filename and image filename, respectively
+
 +UA: allow for transparency (alpha), I like it for creating clear .png files
