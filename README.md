@@ -9,7 +9,7 @@ Windows: download and run the installer from [here](https://www.povray.org/downl
 ## Install Ovito
 Download the version for your computer [here](https://www.povray.org/download/)
 
-## Open the structure in Ovito and manipulate to the scene
+## Open the structure in Ovito and manipulate the scene
 The most important part is getting the view angle you want, but ovito also makes it really easy to make a supercell, change atom colors, remove cell boundaries, add bonds, etc.
 
 ## Export POV-Ray file
@@ -72,6 +72,6 @@ shinify("ovito_file.pov", "ovito_file_shiny.pov")
 ## Finally, run `povray` on the new shiny .pov file
 `povray +H800 +W800 +Iovito_file_shiny.pov +Oovito_file_shiny.png +UA`
 
-+H & +W: image height and width in px
++H & +W: image height and width in px. I usually go well into the 1000's for a final publication image, but ~800 is fast for testing.
 +I & +O: povray filename and image filename, respectively
 +UA: allow for transparency (alpha), I like it for creating clear .png files
