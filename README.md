@@ -14,7 +14,7 @@ Download the version for your computer [here](https://www.povray.org/download/)
 ## Open the structure in Ovito and manipulate the scene
 The most important part is getting the view angle you want, but ovito also makes it really easy to make a supercell, change atom colors, remove cell boundaries, add bonds, etc.
 
-## Export POV-Ray file
+## Export POV-Ray file from Ovito
 file > Export File > select POV-Ray scene
 
 ## shinify the .pov file (something like this.. sorry for the ugly code):
