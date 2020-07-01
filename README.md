@@ -20,32 +20,41 @@ file > Export File > select POV-Ray scene
 ## shinify the .pov file (something like this.. sorry for the ugly code):
 
 ```python
-def shinify(input_filename, output_filename, specular=0.3, reflection=0.8, diffuse=0.9):
+def shinify(
+    input_filename, output_filename, specular=0.8,
+    reflection=0.8, diffuse=0.8, light_intensity=1,
+    light_location=(None, None, None)):
+
+    """
+    Adds finish properties to .pov output files generated from Ovito.
+    
+    args:
+        input_filename (str): existing .pov file created by Ovito
+        output_filename (str): desired filename for "shiny" .pov file
+        specular, reflection, diffuse: finish parameters from POV-Ray, applied to spheres (atoms) and cylinders (bonds)
+            see https://www.povray.org/documentation/view/3.6.1/79/ for more details/options.
+    """
 
     lines = open(input_filename).readlines()
     with open(output_filename, "w") as f:
         i = 0
+        light_fixed = False
         while i < len(lines):
             line = lines[i]
 
-            # Add better lighting
-            # These lines will put a light fixture at the same location as the camera
-            if line.split()[0] == "translate":
-                light_x, light_y, light_z = line.split("<")[1].split(">")[0].split(",")
-                light_z = str(float(light_z.strip()) + 0)
-
-            # you can also mess with the color and its intensity
-            if line.split()[0] == "light_source":
+            # Add your own lighting
+            # you can also mess with the light color and its intensity
+            if line.split()[0] == "light_source" and light_location[0] is not None:
                 f.write(
                     "light_source {\n"
-                    + f"  <{light_x}, {light_y}, {light_z}>\n"
-                    + "  color <1.2, 1.2, 1.2>\n"
+                    + f"  <{light_location[0]}, {light_location[1]}, {light_location[2]}>\n"
+                    + "  color <{light_intensity}, {light_intensity}, {light_intensity}>\n"
                     + "}\n"
                 )
                 i += 6
-
+                
             # Add shiny finish to spherical atoms
-            elif line[0:14] == "#macro SPRTCLE":
+            if line[0:14] == "#macro SPRTCLE":
                 f.write(
                     "#macro SPRTCLE(pos, particleRadius, particleColor, spc, ref, dif) // Macro for spherical particles\n"
                     + "sphere { pos, particleRadius\n"
@@ -70,6 +79,8 @@ def shinify(input_filename, output_filename, specular=0.3, reflection=0.8, diffu
             else:
                 f.write(line)
             i += 1
+
+shinify("ovito_file.pov", "ovito_file_shiny.pov")
 ```
 
 ## Finally, run `povray` on the new shiny .pov file
