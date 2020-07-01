@@ -23,7 +23,8 @@ file > Export File > select POV-Ray scene
 def shinify(
     input_filename, output_filename, specular=0.8,
     reflection=0.8, diffuse=0.8, light_intensity=1,
-    light_location=(None, None, None)):
+    light_location=(None, None, None)
+):
 
     """
     Adds finish properties to .pov output files generated from Ovito.
@@ -33,6 +34,9 @@ def shinify(
         output_filename (str): desired filename for "shiny" .pov file
         specular, reflection, diffuse: finish parameters from POV-Ray, applied to spheres (atoms) and cylinders (bonds)
             see https://www.povray.org/documentation/view/3.6.1/79/ for more details/options.
+        light_intensity (float): multiplier for light intensity
+        light_location (tuple): x, y, and z coordinates of light fixture in the scene. You might have to use trial
+            and error to find the best location if Ovito's default isn't what you want.
     """
 
     lines = open(input_filename).readlines()
