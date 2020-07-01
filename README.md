@@ -103,6 +103,6 @@ The orientation of the Ovito scene is not always obvious; for example, in the im
 f.write("plane {<0, 1, 0>, 9 texture {pigment { color rgb <1, 1, 1> } finish { specular 0 reflection 0.2 diffuse 0.4}}}")
 ```
 
-but don't ask me why the plane is normal to the y-axis and shifted by 9 units, when it looks like it should be normal to the z-axis. I only figured that out by trial and error. I also use a lot of trial and error for the lighting location and intensity, and for adding other objects (blocks, discs, etc.) to the scene. Just consult the POV-Ray documentation for all the possible things you can add and change- it goes WAY beyond what I've achieved in this small example.
+but don't ask me why the plane is normal to the y-axis and shifted by 9 units, when it looks like it should be normal to the z-axis. I only figured that out by trial and error. I also use a lot of trial and error for the lighting location and intensity, and for adding other objects (blocks, discs, etc.) to the scene. Just consult [the POV-Ray documentation](http://www.povray.org/documentation/) for all the possible things you can add and change- it goes WAY beyond what I've achieved in this small example.
 
 <img src="fecl2_shiny.png" width="800px">
