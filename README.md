@@ -110,6 +110,6 @@ I also use a lot of trial and error for the lighting location and intensity, and
 
 <img src="fecl2_shiny.png" width="800px">
 
-You will have to consult [the POV-Ray documentation](http://www.povray.org/documentation/) for all the possible things you can add and change- it goes WAY beyond what I've achieved in this small example. There is also quite a large community of POV-Ray expert users creating example scripts that you should make liberal use of. I buried an ovito atoms scene in an underwater scene I found [here](http://news.povray.org/povray.text.scene-files/message/%3C3920ff12%40news.povray.org%3E/) to get the image below:
+You will have to consult [the POV-Ray documentation](http://www.povray.org/documentation/) for all the possible things you can add and change- it goes WAY beyond what I've achieved in this small example. There is also quite a large community of POV-Ray expert users creating example scripts that you should make liberal use of. For example, I just buried the above ovito atoms scene in an underwater scene I found [here](http://news.povray.org/povray.text.scene-files/message/%3C3920ff12%40news.povray.org%3E/) to get the image below:
 
 <img src="underwater.png" width="800px">
