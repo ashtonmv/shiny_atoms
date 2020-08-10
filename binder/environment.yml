@@ -1,0 +1,10 @@
+channels:
+- https://conda.ovito.org/
+- conda-forge
+dependencies:
+- python
+- ovito =3.1.3
+- ase
+- nglview
+- povray =3.7.0.8=hdf7bbdf_1
+- boost-cpp =1.72.0
